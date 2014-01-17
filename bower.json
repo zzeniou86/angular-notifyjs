@@ -1,0 +1,22 @@
+{
+  "name": "angular-notifyjs",
+  "main": "angular-notifyjs.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/zzeniou86/angular-notifyjs",
+  "authors": [
+    "Zenon Zeniou <zzeniou86@gmail.com>"
+  ],
+  "description": "notifyjs wrapper for angular",
+  "keywords": [
+    "angular",
+    "notifyjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
