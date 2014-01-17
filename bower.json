@@ -9,7 +9,8 @@
   "description": "notifyjs wrapper for angular",
   "keywords": [
     "angular",
-    "notifyjs"
+    "notifyjs",
+    "notification"
   ],
   "license": "MIT",
   "ignore": [
@@ -18,5 +19,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": ">=1.0.6",
+    "notifyjs": "*"
+  }
 }
