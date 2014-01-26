@@ -1,7 +1,7 @@
 {
   "name": "angular-notifyjs",
   "main": "angular-notifyjs.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/zzeniou86/angular-notifyjs",
   "authors": [
     "Zenon Zeniou <zzeniou86@gmail.com>"
