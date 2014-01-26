@@ -1,4 +1,3 @@
-
 angular-notifyjs
 ================
 
@@ -7,11 +6,13 @@ Basic angular module that acts as an wrapper for [notify.js](https://github.com/
 
 Dependencies
 ----------------
+*   [jquery](http://jquery.com/)
+
 *   [angularjs](http://angularjs.org/)
 
 *   [notifyjs](https://github.com/jpillora/notifyjs)
 
-Bower install method (see below) will install both dependencies if missing.
+Bower install method (see below) will install last two dependencies if missing.
 
 
 Installation
@@ -53,6 +54,8 @@ angular.module('myAppName', ['notifyjs'])
 Basic Usage
 ----------------
 
+####Global notification####
+
 Inject `notifyjs` in your controllers or services
 
 Example:
@@ -62,6 +65,22 @@ angular.module('myAppName')
     notifyjs("Hello there", "success");
   });
 ```
+
+####Element notification####
+
+Add attribute `notifyjs` in your HTML element
+
+```html
+<button notifyjs="Hello from the right!" notify-on="click" notify-class="success" notify-pos="right" type="button">Example/button>
+```
+
+Use attribute `notifyjs` for the notification message
+
+Use supportive attribute `notify-on` for the event trigger (defaults to click)
+
+Use supportive attribute `notify-class` for the notification class
+
+Use supportive attribute `notify-pos` for the position of the notification 
 
 Detailed API of notifyjs can be found [here](http://notifyjs.com/)
 
