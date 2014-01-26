@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/notifyjs/dist/notify-combined.js"></script>
+    <script src="../angular-notifyjs.js"></script>
+    <script type="text/javascript">
+      angular.module('app', ['notifyjs'])
+       
+      .controller('notifyCtrl', function($scope, notifyjs) {
+        $scope.global1 = function() {
+          notifyjs("Hello world", 'success');
+        };
+        $scope.global2 = function() {
+          notifyjs("Something went wrong!", 'error');
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller='notifyCtrl'>
+      <div>
+        <label>Global notification:</label>
+        <button type="button" ng-click="global1()">Example One</button>
+        <button type="button" ng-click="global2()">Example two</button>
+      </div>
+      <div>
+        <label>Global notification:</label>
+        <button notifyjs="Hello world" notify-on="click" notify-class="error" type="button">Example One</button>
+        <button notifyjs="Hello from the right!" notify-on="click" notify-class="success" notify-pos="right" type="button">Example two</button>
+      </div>
+    </div>
+  </body>
+</html>
