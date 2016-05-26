@@ -36,7 +36,7 @@ Include the javascript files in your projects
 
 ```html
 <script src="bower_components/notifyjs/dist/notify.min.js"></script>
-<script src="bower_components/notifyjs/dist/styles/notify-bootstrap.js"></script>
+<script src="bower_components/notifyjs/dist/styles/bootstrap/notify-bootstrap.js"></script>
 ```
 
 ```html
