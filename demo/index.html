@@ -5,31 +5,88 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/notifyjs/dist/notify-combined.js"></script>
     <script src="../angular-notifyjs.js"></script>
+
+    <style type="text/css">
+      .notifyjs-customSuccess-base .notifyjs-bootstrap-success,
+      .notifyjs-customInfo-base .notifyjs-bootstrap-info{
+        color: lightcoral;
+        background-color: lightpink;
+        border-color: lightsteelblue;
+      }
+
+    </style>
     <script type="text/javascript">
       angular.module('app', ['notifyjs'])
-       
-      .controller('notifyCtrl', function($scope, notifyjs) {
-        $scope.global1 = function() {
-          notifyjs("Hello world", 'success');
-        };
-        $scope.global2 = function() {
-          notifyjs("Something went wrong!", 'error');
-        }
-      });
+        .config(function (notifyjsProvider) {
+
+          // Setting defaults
+          notifyjsProvider.defaults({
+            globalPosition: 'top right',
+            autoHideDelay: 300000
+          });
+
+          // custom template
+          var _customNotifyJSTemplate = function (str) {
+            return ['<div class="notifyjs-container">',
+              '<div class="notifyjs-bootstrap-base ', str, '">',
+              '<span data-notify-text/></span>',
+              '<i class="fa fa-times" style="margin-left: 7px"></i>',
+              '</div>','</div>'].join('');
+          };
+
+          // Example of using the addStyleCache
+          notifyjsProvider.addStyleCache.push({
+            name: 'customSuccess',
+            html: _customNotifyJSTemplate('notifyjs-bootstrap-success')
+          },{
+            name: 'customInfo',
+            html: _customNotifyJSTemplate('notifyjs-bootstrap-info')
+          });
+
+        })
+        .controller('notifyCtrl', function ($scope, notifyjs) {
+          $scope.global1 = function () {
+            notifyjs('Hello world', 'success');
+          };
+          $scope.global2 = function () {
+            notifyjs('Something went wrong!', 'error');
+          }
+
+          $scope.custom1 = function () {
+            notifyjs('Custom Template: customSuccess', {style: 'customSuccess'});
+          }
+
+          $scope.custom2 = function () {
+            notifyjs('Custom Template: customInfo', {style: 'customInfo'});
+          }
+
+        });
     </script>
   </head>
   <body ng-app="app">
     <div ng-controller='notifyCtrl'>
       <div>
-        <label>Global notification:</label>
+        <label>Simple Functional Examples:</label>
         <button type="button" ng-click="global1()">Example One</button>
         <button type="button" ng-click="global2()">Example two</button>
       </div>
+
+      <hr />
+
+      <div>
+        <label>Advanced Functional Examples:</label>
+        <button type="button" ng-click="custom1()">Custom1 One</button>
+        <button type="button" ng-click="custom2()">Custom2 two</button>
+      </div>
+
+      <hr />
+
       <div>
         <label>Global notification:</label>
         <button notifyjs="Hello world" notify-on="click" notify-class="error" type="button">Example One</button>
         <button notifyjs="Hello from the right!" notify-on="click" notify-class="success" notify-pos="right" type="button">Example two</button>
       </div>
+
     </div>
   </body>
 </html>
